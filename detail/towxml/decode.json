@@ -1,0 +1,13 @@
+{
+  "component": true,
+  "usingComponents": {
+    "decode": "/detail/towxml/decode",
+    "audio-player": "/detail/towxml/audio-player/audio-player",
+    "echarts": "/detail/towxml/echarts/echarts",
+    "latex": "/detail/towxml/latex/latex",
+    "table": "/detail/towxml/table/table",
+    "todogroup": "/detail/towxml/todogroup/todogroup",
+    "yuml": "/detail/towxml/yuml/yuml",
+    "img": "/detail/towxml/img/img"
+  }
+}

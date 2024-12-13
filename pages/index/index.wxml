@@ -1,0 +1,18 @@
+<view class="container">
+  <view class="header">
+    <text class="title">bookstack</text>
+    <view class="search">
+      <image src="https://s2.loli.net/2024/12/13/H4nBZUAoFzfeRI2.png" mode="aspectFit"></image>
+    </view>
+  </view>
+
+  <view class="book-grid">
+    <view class="book-card" wx:for="{{books}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+      <image class="book-image" src="{{item.image}}" mode="aspectFit"></image>
+      <view class="book-info">
+        <text class="book-title">{{item.title}}</text>
+        <text class="book-date">{{item.date}}</text>
+      </view>
+    </view>
+  </view>
+</view>

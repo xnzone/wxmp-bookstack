@@ -1,0 +1,53 @@
+<view class="container">
+  <view class="menu-button" bindtap="toggleMenu">
+    <image src="https://s2.loli.net/2024/12/13/cpMhF4b9DPCiZWr.png" mode="aspectFit"></image>
+  </view>
+
+  <view class="sidebar {{showMenu ? 'show' : ''}}">
+    <view class="menu-list">
+      <view wx:for="{{menuList}}" wx:key="id" class="menu-group">
+        <!-- 一级菜单标题 -->
+        <view class="menu-title">
+          <text>{{item.title}}</text>
+        </view>
+        
+        <!-- 一级菜单项目列表 -->
+        <view class="submenu">
+          <block wx:for="{{item.children}}" wx:key="id" wx:for-item="subItem">
+            <block wx:if="{{subItem.children && subItem.children.length > 0}}">
+              <!-- 带有子菜单的项目 -->
+              <view class="submenu-title" catchtap="selectMenuItem" data-id="{{subItem.id}}">
+                <text>{{subItem.title}}</text>
+                <text class="arrow {{expandedMenu[subItem.id] ? 'arrow-down' : ''}}">></text>
+              </view>
+              <!-- 子菜单列表 -->
+              <view class="third-menu {{expandedMenu[subItem.id] ? 'expanded' : ''}}">
+                <view wx:for="{{subItem.children}}" 
+                      wx:key="id" 
+                      wx:for-item="thirdItem"
+                      class="menu-item"
+                      catchtap="selectMenuItem"
+                      data-id="{{thirdItem.id}}">
+                  {{thirdItem.title}}
+                </view>
+              </view>
+            </block>
+            <!-- 没有子菜单的项目 -->
+            <view wx:else 
+                  class="menu-item"
+                  catchtap="selectMenuItem"
+                  data-id="{{subItem.id}}">
+              {{subItem.title}}
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="content">
+    <view class="content-inner">
+      <towxml nodes="{{article}}"/>
+    </view>
+  </view>
+</view>
