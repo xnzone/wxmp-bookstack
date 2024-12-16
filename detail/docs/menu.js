@@ -272,10 +272,6 @@ export const menuConfig = [
           {
             "id": "18_mget",
             "title": "MGET"
-          },
-          {
-            "id": "_index",
-            "title": "字符串"
           }
         ]
       },
@@ -342,10 +338,6 @@ export const menuConfig = [
           {
             "id": "15_hscan",
             "title": "HSCAN"
-          },
-          {
-            "id": "_index",
-            "title": "哈希表"
           }
         ]
       },
@@ -416,10 +408,6 @@ export const menuConfig = [
           {
             "id": "16_brpoplpush",
             "title": "BRPOPLPUSH"
-          },
-          {
-            "id": "_index",
-            "title": "列表"
           }
         ]
       },
@@ -486,10 +474,6 @@ export const menuConfig = [
           {
             "id": "15_sdiffstore",
             "title": "SDIFFSTORE"
-          },
-          {
-            "id": "_index",
-            "title": "集合"
           }
         ]
       },
@@ -516,10 +500,6 @@ export const menuConfig = [
           {
             "id": "05_zcount",
             "title": "ZCOUNT"
-          },
-          {
-            "id": "_index",
-            "title": "有序集合"
           }
         ]
       }
