@@ -1,7 +1,3 @@
 App({
-  onLaunch: function () {
-    wx.setEnableDebug({
-      enableDebug: false,
-    })
-  },
+  onLaunch: function () {},
 })

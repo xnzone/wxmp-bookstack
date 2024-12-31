@@ -13,7 +13,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "bookstack",
+    "navigationBarTitleText": "iBookstack",
     "navigationBarTextStyle": "black"
   },
   "lazyCodeLoading": "requiredComponents"

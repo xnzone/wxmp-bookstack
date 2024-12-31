@@ -1,6 +1,6 @@
 module.exports = `
 
-# GETSET key value[
+# GETSET key value
 
 > 可用版本： >= 1.0.0
 > 

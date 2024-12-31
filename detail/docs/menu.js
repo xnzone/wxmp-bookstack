@@ -227,7 +227,7 @@ export const menuConfig = [
           },
           {
             "id": "07_strlen",
-            "title": "GETSET"
+            "title": "STRLEN"
           },
           {
             "id": "08_append",
@@ -500,6 +500,244 @@ export const menuConfig = [
           {
             "id": "05_zcount",
             "title": "ZCOUNT"
+          },
+          {
+            "id": "06_zrange",
+            "title": "ZRANGE"
+          },
+          {
+            "id": "07_zrevrange",
+            "title": "ZREVRANGE"
+          },
+          {
+            "id": "08_zrangebyscore",
+            "title": "ZRANGEBYSCORE"
+          },
+          {
+            "id": "09_zrevrangebyscore",
+            "title": "ZREVRANGEBYSCORE"
+          },
+          {
+            "id": "10_zrank",
+            "title": "ZRANK"
+          },
+          {
+            "id": "11_zrevzrank",
+            "title": "ZREVRANK"
+          },
+          {
+            "id": "12_zrem",
+            "title": "ZREM"
+          },
+          {
+            "id": "13_zremrangebyrank",
+            "title": "ZREMRANGEBYRANK"
+          },
+          {
+            "id": "14_zremrangebyscore",
+            "title": "ZREMRANGEBYSCORE"
+          },
+          {
+            "id": "15_zrangebylex",
+            "title": "ZRANGEBYLEX"
+          },
+          {
+            "id": "16_zlexcount",
+            "title": "ZLEXCOUNT"
+          },
+          {
+            "id": "17_zremrangebylex",
+            "title": "ZREMRANGEBYLEX"
+          },
+          {
+            "id": "18_zscan",
+            "title": "ZSCAN"
+          },
+          {
+            "id": "19_zunionstore",
+            "title": "ZUNIONSTORE"
+          },
+          {
+            "id": "20_zinterstore",
+            "title": "ZINTERSTORE"
+          }
+        ]
+      },
+      {
+        "id": "06_hyperloglog",
+        "title": "HyperLogLog",
+        "children": [
+          {
+            "id": "01_pfadd",
+            "title": "PFADD"
+          },
+          {
+            "id": "02_pfcount",
+            "title": "PFCOUNT"
+          },
+          {
+            "id": "03_pfmerge",
+            "title": "PFMERGE"
+          }
+        ]
+      },
+      {
+        "id": "07_geo",
+        "title": "地理位置",
+        "children": [
+          {
+            "id": "01_geoadd",
+            "title": "GEOADD"
+          },
+          {
+            "id": "02_geopos",
+            "title": "GEOPOS"
+          },
+          {
+            "id": "03_geodist",
+            "title": "GEODIST"
+          },
+          {
+            "id": "04_georadius",
+            "title": "GEORADIUS"
+          },
+          {
+            "id": "05_georadiusbymember",
+            "title": "GEORADIUSBYMEMBER"
+          },
+          {
+            "id": "06_geohash",
+            "title": "GEOHASH"
+          }
+        ]
+      },
+      {
+        "id": "08_bitmap",
+        "title": "位图",
+        "children": [
+          {
+            "id": "01_setbit",
+            "title": "SETBIT"
+          },
+          {
+            "id": "02_getbit",
+            "title": "GETBIT"
+          },
+          {
+            "id": "03_bitcount",
+            "title": "BITCOUNT"
+          },
+          {
+            "id": "04_bitpos",
+            "title": "BITPOS"
+          },
+          {
+            "id": "05_bitop",
+            "title": "BITOP"
+          },
+          {
+            "id": "06_bitfield",
+            "title": "BITFIELD"
+          }
+        ]
+      },
+      {
+        "id": "09_database",
+        "title": "数据库",
+        "children": [
+          {
+            "id": "01_exists",
+            "title": "EXISTS"
+          },
+          {
+            "id": "02_type",
+            "title": "TYPE"
+          },
+          {
+            "id": "03_rename",
+            "title": "RENAME"
+          },
+          {
+            "id": "04_renamenx",
+            "title": "RENAMENX"
+          },
+          {
+            "id": "05_move",
+            "title": "MOVE"
+          },
+          {
+            "id": "06_del",
+            "title": "DEL"
+          },
+          {
+            "id": "07_randomkey",
+            "title": "RANDOMKEY"
+          },
+          {
+            "id": "08_dbsize",
+            "title": "DBSIZE"
+          },
+          {
+            "id": "09_keys",
+            "title": "KEYS"
+          },
+          {
+            "id": "10_scan",
+            "title": "SCAN"
+          },
+          {
+            "id": "11_sort",
+            "title": "SORT"
+          },
+          {
+            "id": "12_flushdb",
+            "title": "FLUSHDB"
+          },
+          {
+            "id": "13_flushall",
+            "title": "FLUSHALL"
+          },
+          {
+            "id": "14_select",
+            "title": "SELECT"
+          },
+          {
+            "id": "14_swapdb",
+            "title": "SWAPDB"
+          }
+        ]
+      },
+      {
+        "id": "10_expire",
+        "title": "自动过期",
+        "children": [
+          {
+            "id": "01_expire",
+            "title": "EXPIRE"
+          },
+          {
+            "id": "02_expireat",
+            "title": "EXPIREAT"
+          },
+          {
+            "id": "03_ttl",
+            "title": "TTL"
+          },
+          {
+            "id": "04_persist",
+            "title": "PERSIST"
+          },
+          {
+            "id": "05_pexpire",
+            "title": "PEXPIRE"
+          },
+          {
+            "id": "06_pexpireat",
+            "title": "PEXPIREAT"
+          },
+          {
+            "id": "07_pttl",
+            "title": "PTTL"
           }
         ]
       }
