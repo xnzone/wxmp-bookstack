@@ -4,9 +4,27 @@
   ],
   "subPackages": [
     {
-      "root": "detail",
+      "root": "01_mysql_45",
       "pages": [
-        "pages/detail/index"
+        "pages/index"
+      ]
+    },
+    {
+      "root": "02_redisdoc",
+      "pages": [
+        "pages/index"
+      ]
+    },
+    {
+      "root": "03_distributed_systems_for_fun_and_profit",
+      "pages": [
+        "pages/index"
+      ]
+    },
+    {
+      "root": "04_distributed_systems_for_fun_and_profit_zh",
+      "pages": [
+        "pages/index"
       ]
     }
   ],
