@@ -82,10 +82,6 @@ export const menuConfig = [
           {
             "id": "18_mget",
             "title": "MGET"
-          },
-          {
-            "id": "_index",
-            "title": "字符串"
           }
         ]
       },
@@ -152,10 +148,6 @@ export const menuConfig = [
           {
             "id": "15_hscan",
             "title": "HSCAN"
-          },
-          {
-            "id": "_index",
-            "title": "哈希表"
           }
         ]
       },
@@ -226,10 +218,6 @@ export const menuConfig = [
           {
             "id": "16_brpoplpush",
             "title": "BRPOPLPUSH"
-          },
-          {
-            "id": "_index",
-            "title": "列表"
           }
         ]
       },
@@ -296,10 +284,6 @@ export const menuConfig = [
           {
             "id": "15_sdiffstore",
             "title": "SDIFFSTORE"
-          },
-          {
-            "id": "_index",
-            "title": "集合"
           }
         ]
       },
@@ -386,10 +370,6 @@ export const menuConfig = [
           {
             "id": "20_zinterstore",
             "title": "ZINTERSTORE"
-          },
-          {
-            "id": "_index",
-            "title": "有序集合"
           }
         ]
       },
@@ -408,10 +388,6 @@ export const menuConfig = [
           {
             "id": "03_pfmerge",
             "title": "PFMERGE"
-          },
-          {
-            "id": "_index",
-            "title": "HyperLogLog"
           }
         ]
       },
@@ -442,10 +418,6 @@ export const menuConfig = [
           {
             "id": "06_geohash",
             "title": "GEOHASH"
-          },
-          {
-            "id": "_index",
-            "title": "地理位置"
           }
         ]
       },
@@ -476,10 +448,6 @@ export const menuConfig = [
           {
             "id": "06_bitfield",
             "title": "BITFIELD"
-          },
-          {
-            "id": "_index",
-            "title": "位图"
           }
         ]
       },
@@ -546,10 +514,6 @@ export const menuConfig = [
           {
             "id": "14_swapdb",
             "title": "SWAPDB"
-          },
-          {
-            "id": "_index",
-            "title": "数据库"
           }
         ]
       },
@@ -584,10 +548,6 @@ export const menuConfig = [
           {
             "id": "07_pttl",
             "title": "PTTL"
-          },
-          {
-            "id": "_index",
-            "title": "自动过期"
           }
         ]
       },
@@ -614,10 +574,6 @@ export const menuConfig = [
           {
             "id": "05_unwatch",
             "title": "UNWATCH"
-          },
-          {
-            "id": "_index",
-            "title": "事务"
           }
         ]
       },
@@ -648,10 +604,6 @@ export const menuConfig = [
           {
             "id": "06_script_kill",
             "title": "SCRIPT KILL"
-          },
-          {
-            "id": "_index",
-            "title": "Lua脚本"
           }
         ]
       },
@@ -674,10 +626,6 @@ export const menuConfig = [
           {
             "id": "04_lastsave",
             "title": "LASTSAVE"
-          },
-          {
-            "id": "_index",
-            "title": "持久化"
           }
         ]
       },
@@ -708,10 +656,6 @@ export const menuConfig = [
           {
             "id": "06_pubsub",
             "title": "PUBSUB"
-          },
-          {
-            "id": "_index",
-            "title": "发布与订阅"
           }
         ]
       },
@@ -726,10 +670,6 @@ export const menuConfig = [
           {
             "id": "02_role",
             "title": "ROLE"
-          },
-          {
-            "id": "_index",
-            "title": "复制"
           }
         ]
       },
@@ -772,10 +712,6 @@ export const menuConfig = [
           {
             "id": "09_client_setname",
             "title": "CLIENT SETNAME"
-          },
-          {
-            "id": "_index",
-            "title": "客户端与服务器"
           }
         ]
       },
@@ -798,10 +734,6 @@ export const menuConfig = [
           {
             "id": "04_config_rewrite",
             "title": "CONFIG REWRITE"
-          },
-          {
-            "id": "_index",
-            "title": "配置选项"
           }
         ]
       },
@@ -836,10 +768,6 @@ export const menuConfig = [
           {
             "id": "07_debug_segfault",
             "title": "DEBUG SEGFAULT"
-          },
-          {
-            "id": "_index",
-            "title": "调试"
           }
         ]
       },
@@ -866,10 +794,6 @@ export const menuConfig = [
           {
             "id": "05_psync",
             "title": "PSYNC"
-          },
-          {
-            "id": "_index",
-            "title": "内部命令"
           }
         ]
       },
@@ -912,10 +836,6 @@ export const menuConfig = [
           {
             "id": "09_trasation",
             "title": "事务"
-          },
-          {
-            "id": "_index",
-            "title": "功能文档"
           }
         ]
       }
