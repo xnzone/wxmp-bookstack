@@ -118,10 +118,13 @@
 }
 
 .arrow {
-  display: inline-block;
-  transition: transform 0.3s;
-  font-size: 24rpx;
-  color: #666;
+  width:0px;
+  height:0px;
+  border-bottom:6rpx solid transparent; 
+  border-top:6rpx solid transparent; 
+  border-left:10rpx solid #666; 
+  font-size:0px;
+  line-height:0px;
 }
 
 .arrow-down {
