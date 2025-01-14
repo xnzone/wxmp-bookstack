@@ -78,3 +78,14 @@
   width: 44rpx;
   height: 44rpx;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40rpx;
+}
+
+.pagination button {
+  margin: 0 20rpx;
+}

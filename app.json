@@ -26,6 +26,12 @@
       "pages": [
         "pages/index"
       ]
+    },
+    {
+      "root": "05_golang_note",
+      "pages": [
+        "pages/index"
+      ]
     }
   ],
   "window": {

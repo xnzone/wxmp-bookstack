@@ -7,12 +7,17 @@
   </view>
 
   <view class="book-grid">
-    <view class="book-card" wx:for="{{books}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
+    <view class="book-card" wx:for="{{displayItems}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
       <image class="book-image" src="{{item.image}}" mode="aspectFit"></image>
       <view class="book-info">
         <text class="book-title">{{item.title}}</text>
         <text class="book-date">{{item.date}}</text>
       </view>
     </view>
+  </view>
+  <view class="pagination">
+    <button bindtap="prevPage" disabled="{{currentPage === 1}}">上一页</button>
+    <text>第 {{currentPage}} 页 / 共 {{totalPages}} 页</text>
+    <button bindtap="nextPage" disabled="{{currentPage === totalPages}}">下一页</button>
   </view>
 </view>
