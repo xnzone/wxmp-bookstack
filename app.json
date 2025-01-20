@@ -32,6 +32,18 @@
       "pages": [
         "pages/index"
       ]
+    },
+    {
+      "root": "06_os_tutorial",
+      "pages": [
+        "pages/index"
+      ]
+    },
+    {
+      "root": "07_os_tutorial_zh",
+      "pages": [
+        "pages/index"
+      ]
     }
   ],
   "window": {

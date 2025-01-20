@@ -1,0 +1,18 @@
+module.exports = {
+  '06-os-tutorial_00-cover': require('./06-os-tutorial/00-cover.js'),
+  '06-os-tutorial_01-environment': require('./06-os-tutorial/01-environment.js'),
+  '06-os-tutorial_02-bootsector-barebones': require('./06-os-tutorial/02-bootsector-barebones.js'),
+  '06-os-tutorial_03-bootsector-print': require('./06-os-tutorial/03-bootsector-print.js'),
+  '06-os-tutorial_04-bootsector-memory': require('./06-os-tutorial/04-bootsector-memory.js'),
+  '06-os-tutorial_05-bootsector-stack': require('./06-os-tutorial/05-bootsector-stack.js'),
+  '06-os-tutorial_06-bootsector-functions-strings': require('./06-os-tutorial/06-bootsector-functions-strings.js'),
+  '06-os-tutorial_07-bootsector-segmentation': require('./06-os-tutorial/07-bootsector-segmentation.js'),
+  '06-os-tutorial_08-bootsector-disk': require('./06-os-tutorial/08-bootsector-disk.js'),
+  '06-os-tutorial_09-32bit-print': require('./06-os-tutorial/09-32bit-print.js'),
+  '06-os-tutorial_10-32bit-gdt': require('./06-os-tutorial/10-32bit-gdt.js'),
+  '06-os-tutorial_11-32bit-enter': require('./06-os-tutorial/11-32bit-enter.js'),
+  '06-os-tutorial_12-kernel-crosscompiler': require('./06-os-tutorial/12-kernel-crosscompiler.js'),
+  '06-os-tutorial_13-kernel-c': require('./06-os-tutorial/13-kernel-c.js'),
+  '06-os-tutorial_14-kernel-barebones': require('./06-os-tutorial/14-kernel-barebones.js'),
+  '06_os_tutorial': require('./06-os-tutorial/00-cover.js'),
+};
