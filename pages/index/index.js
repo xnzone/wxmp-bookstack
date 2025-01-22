@@ -47,6 +47,12 @@ Page({
         title: '从零构建操作系统',
         image: 'https://s2.loli.net/2025/01/20/lLc8ivV6Y47mrIt.png',
         date: '2021-09-10'
+      },
+      {
+        id: "08_leetcode_solution",
+        title: 'LeetCode分类题解',
+        image: 'https://s2.loli.net/2025/01/22/jOmZVuw4kMSafHK.png',
+        date: '2022-06-23'
       }
     ]
   },

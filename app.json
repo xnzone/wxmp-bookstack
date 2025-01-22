@@ -44,6 +44,12 @@
       "pages": [
         "pages/index"
       ]
+    },
+    {
+      "root": "08_leetcode_solution",
+      "pages": [
+        "pages/index"
+      ]
     }
   ],
   "window": {
