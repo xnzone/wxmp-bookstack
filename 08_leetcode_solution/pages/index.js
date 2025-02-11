@@ -8,11 +8,13 @@ Page({
     menuList: [],
     article: {},
     showMenu: false,
-    expandedMenu: {}
+    expandedMenu: {},
+    book: {},
   },
 
   onLoad: function(options) {
     console.log(options)
+    this.data.book = options
     if (options.id) {
       console.log(options.id);
       // 获取当前 id 对应的完整菜单路径
@@ -122,5 +124,33 @@ Page({
 			_ts.setData({
 				article:obj
       });
+  },
+  onShareAppMessage() {
+    const promise = new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
+          title: this.data.book.title
+        })
+      }, 2000)
+    })
+    return {
+      title: this.data.book.title,
+      path: `/${this.data.book.id}/pages/index?id=${this.data.book.id}&title=${this.data.book.title}`,
+      promise 
+    }
+  },
+  onShareTimeline() {
+    const promise = new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
+          title: this.data.book.title
+        })
+      }, 2000)
+    })
+    return {
+      title: this.data.book.title,
+      path: `/${this.data.book.id}/pages/index?id=${this.data.book.id}&title=${this.data.book.title}`,
+      promise 
+    }
   }
 })

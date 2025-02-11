@@ -94,8 +94,43 @@ Page({
   // 跳转到详情页
   goToDetail(e) {
     const { id } = e.currentTarget.dataset;
+    var title = "";
+    for (let idx = 0; idx < this.data.books.length; idx++) {
+      const book = this.data.books[idx];
+      if (book.id === id) {
+        title = book.title
+      }
+    }
     wx.navigateTo({
-      url: `/${id}/pages/index?id=${id}`
+      url: `/${id}/pages/index?id=${id}&title=${title}`
     });
+  },
+  onShareAppMessage() {
+    const promise = new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
+          title: 'iBookstack'
+        })
+      }, 2000)
+    })
+    return {
+      title: 'iBookstack',
+      path: '/page/index/index',
+      promise 
+    }
+  },
+  onShareTimeline() {
+    const promise = new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
+          title: 'iBookstack'
+        })
+      }, 2000)
+    })
+    return {
+      title: 'iBookstack',
+      path: '/page/index/index',
+      promise 
+    }
   }
 })
