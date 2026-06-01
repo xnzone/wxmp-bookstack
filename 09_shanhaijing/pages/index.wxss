@@ -1,0 +1,315 @@
+.container {
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+
+.menu-button {
+  display: none;
+  position: fixed;
+  top: 20rpx;
+  right: 20rpx;
+  z-index: 100;
+}
+
+.menu-button image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.sidebar {
+  width: 300rpx;
+  height: 100%;
+  background: #f5f5f5;
+  overflow-y: auto;
+  border-right: 1rpx solid #eee;
+}
+
+.menu-list {
+  padding: 20rpx 0;
+}
+
+.menu-group {
+  margin-bottom: 20rpx;
+}
+
+.menu-title {
+  padding: 20rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.menu-item {
+  padding: 16rpx 20rpx 16rpx 40rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.menu-item:hover {
+  background: #e6e6e6;
+}
+
+.content {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  background: #f9f9f9;
+}
+
+.content-inner {
+  padding: 40rpx;
+}
+
+/* ============ 卡片模式 ============ */
+
+/* 页面头部 */
+.card-page-header {
+  margin-bottom: 40rpx;
+  text-align: center;
+}
+.card-page-title {
+  font-size: 44rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  display: block;
+}
+.card-page-subtitle {
+  font-size: 28rpx;
+  color: #7f8c8d;
+  margin-top: 12rpx;
+  display: block;
+}
+.card-page-desc {
+  font-size: 26rpx;
+  color: #95a5a6;
+  margin-top: 16rpx;
+  display: block;
+  line-height: 1.6;
+}
+
+/* 卡片网格 */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30rpx;
+}
+
+/* 卡片容器 */
+.card-wrapper {
+  height: 520rpx;
+  perspective: 1500rpx;
+  cursor: pointer;
+}
+
+/* 卡片内部 — 3D 翻转 */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  border-radius: 24rpx;
+  box-shadow: 0 8rpx 30rpx rgba(0, 0, 0, 0.08);
+}
+
+.card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+/* 卡片的两个面 */
+.card-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 24rpx;
+  overflow: hidden;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+/* 正面 */
+.card-front {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #fefefe, #f5f0eb);
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+}
+
+.card-img-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* 无图片时的占位 */
+.card-no-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 40rpx;
+  background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+}
+
+.card-no-image-text {
+  font-size: 26rpx;
+  color: #7f5f4e;
+  line-height: 1.8;
+  text-align: center;
+  font-style: italic;
+}
+
+/* 名字标签 */
+.card-name-tag {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 4rpx;
+}
+
+/* 反面 */
+.card-back {
+  padding: 32rpx;
+  display: flex;
+  flex-direction: column;
+  background: #2c3e50;
+  color: #ecf0f1;
+  transform: rotateY(180deg);
+  overflow-y: auto;
+}
+
+.card-back-header {
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 2rpx solid rgba(255, 255, 255, 0.2);
+}
+
+.card-back-section {
+  margin-bottom: 16rpx;
+}
+
+.card-back-label {
+  font-size: 22rpx;
+  color: #f1c40f;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 6rpx;
+}
+
+.card-back-text {
+  font-size: 24rpx;
+  color: #bdc3c7;
+  line-height: 1.7;
+  display: block;
+}
+
+.card-tip {
+  margin-top: auto;
+  text-align: center;
+  font-size: 20rpx;
+  color: #7f8c8d;
+  padding-top: 12rpx;
+}
+
+/* ============ 原有菜单样式 ============ */
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .menu-button {
+    display: block;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: -300rpx;
+    top: 0;
+    z-index: 99;
+    transition: all 0.3s;
+  }
+
+  .sidebar.show {
+    left: 0;
+  }
+
+  .content {
+    padding-left: 0;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* 在原有样式基础上添加 */
+.submenu {
+  height: auto;
+}
+
+.submenu-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16rpx 20rpx;
+  font-size: 26rpx;
+}
+
+.third-menu {
+  height: 0;
+  overflow: hidden;
+  transition: height 0.3s;
+}
+
+.third-menu.expanded {
+  height: auto;
+}
+
+.menu-item {
+  padding: 16rpx 20rpx 16rpx 40rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.third-menu .menu-item {
+  padding-left: 60rpx;
+}
+
+.arrow {
+  width:0px;
+  height:0px;
+  border-bottom:6rpx solid transparent; 
+  border-top:6rpx solid transparent; 
+  border-left:10rpx solid #666; 
+  font-size:0px;
+  line-height:0px;
+}
+
+.arrow-down {
+  transform: rotate(90deg);
+}
+
+.menu-item:active {
+  background-color: #f0f0f0;
+}

@@ -50,6 +50,12 @@
       "pages": [
         "pages/index"
       ]
+    },
+    {
+      "root": "09_shanhaijing",
+      "pages": [
+        "pages/index"
+      ]
     }
   ],
   "window": {

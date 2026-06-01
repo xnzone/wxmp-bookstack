@@ -1,0 +1,86 @@
+<view class="container">
+  <view class="menu-button" bindtap="toggleMenu">
+    <image src="https://s2.loli.net/2024/12/13/cpMhF4b9DPCiZWr.png" mode="aspectFit"></image>
+  </view>
+
+  <view class="sidebar {{showMenu ? 'show' : ''}}">
+    <view class="menu-list">
+      <view wx:for="{{menuList}}" wx:key="id" class="menu-group">
+        <view class="menu-title">
+          <text>{{item.title}}</text>
+        </view>
+        <view class="submenu">
+          <block wx:for="{{item.children}}" wx:key="id" wx:for-item="subItem">
+            <block wx:if="{{subItem.children && subItem.children.length > 0}}">
+              <view class="submenu-title" catchtap="selectMenuItem" data-id="{{subItem.id}}">
+                <text>{{subItem.title}}</text>
+                <text class="arrow {{expandedMenu[subItem.id] ? 'arrow-down' : ''}}">></text>
+              </view>
+              <view class="third-menu {{expandedMenu[subItem.id] ? 'expanded' : ''}}">
+                <view wx:for="{{subItem.children}}" 
+                      wx:key="id" 
+                      wx:for-item="thirdItem"
+                      class="menu-item"
+                      catchtap="selectMenuItem"
+                      data-id="{{thirdItem.id}}">
+                  {{thirdItem.title}}
+                </view>
+              </view>
+            </block>
+            <view wx:else 
+                  class="menu-item"
+                  catchtap="selectMenuItem"
+                  data-id="{{subItem.id}}">
+              {{subItem.title}}
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="content">
+    <view class="content-inner">
+      <!-- 卡片模式 -->
+      <view wx:if="{{contentType === 'cards'}}" class="card-full">
+        <view class="card-page-header">
+          <text class="card-page-title">{{pageTitle}}</text>
+          <text class="card-page-subtitle" wx:if="{{pageSubtitle}}">{{pageSubtitle}}</text>
+          <text class="card-page-desc" wx:if="{{pageDesc}}">{{pageDesc}}</text>
+        </view>
+        <view class="card-grid">
+          <view wx:for="{{beasts}}" wx:key="name" class="card-wrapper" catchtap="flipCard" data-index="{{index}}">
+            <view class="card-inner {{item.flipped ? 'flipped' : ''}}">
+              <view class="card-face card-front">
+                <view wx:if="{{item.image}}" class="card-img-wrap">
+                  <image class="card-image" src="{{item.image}}" mode="aspectFill"></image>
+                </view>
+                <view wx:else class="card-no-image">
+                  <text class="card-no-image-text">{{item.appearance}}</text>
+                </view>
+                <view class="card-name-tag">{{item.name}}</view>
+              </view>
+              <view class="card-face card-back">
+                <view class="card-back-header">{{item.name}}</view>
+                <view class="card-back-section">
+                  <text class="card-back-label">【山海经原文】</text>
+                  <text class="card-back-text">{{item.original}}</text>
+                </view>
+                <view class="card-back-section">
+                  <text class="card-back-label">【释义】</text>
+                  <text class="card-back-text">{{item.translation}}</text>
+                </view>
+                <view class="card-tip">点击翻转</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- Markdown 模式 -->
+      <view wx:else class="markdown-full">
+        <towxml nodes="{{article}}"/>
+      </view>
+    </view>
+  </view>
+</view>
