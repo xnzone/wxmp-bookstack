@@ -9,7 +9,8 @@ Page({
       {
         id: "09_shanhaijing",
         title: "山海经奇珍异兽图集",
-        image: "https://files.seeusercontent.com/2026/06/01/x4uA/cover.png",
+        image:
+          "https://files.seeusercontent.com/2026/06/02/8ktG/20260602095727385.png",
         date: "2026-06-01",
       },
       {

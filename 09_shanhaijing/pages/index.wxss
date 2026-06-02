@@ -1,71 +1,232 @@
 .container {
   display: flex;
+  flex-direction: column;
   height: 100vh;
   position: relative;
 }
 
-.menu-button {
-  display: none;
+/* ============ 顶部导航栏 ============ */
+.nav-bar {
   position: fixed;
-  top: 20rpx;
-  right: 20rpx;
-  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24rpx;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
+  z-index: 50;
+  box-sizing: border-box;
 }
 
-.menu-button image {
-  width: 40rpx;
-  height: 40rpx;
+.nav-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #2c3e50;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 20rpx;
 }
 
-.sidebar {
-  width: 300rpx;
-  height: 100%;
+/* 汉堡图标 */
+.nav-menu-btn {
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12rpx;
+  flex-shrink: 0;
+}
+
+.nav-menu-btn:active {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.menu-icon {
+  width: 36rpx;
+  height: 36rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 6rpx 0;
+}
+
+.menu-icon-line {
+  width: 100%;
+  height: 3rpx;
+  background: #555;
+  border-radius: 2rpx;
+}
+
+/* ============ 遮罩层 ============ */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 90;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.menu-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ============ 底部弹窗 ============ */
+.bottom-sheet {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-height: 75vh;
+  background: #fff;
+  border-radius: 32rpx 32rpx 0 0;
+  z-index: 95;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  box-shadow: 0 -8rpx 40rpx rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-sheet.show {
+  transform: translateY(0);
+}
+
+/* 拖拽指示条 */
+.sheet-handle {
+  width: 60rpx;
+  height: 6rpx;
+  background: #ddd;
+  border-radius: 3rpx;
+  margin: 16rpx auto 8rpx;
+  flex-shrink: 0;
+}
+
+/* 弹窗头部 */
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 32rpx 20rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  flex-shrink: 0;
+}
+
+.sheet-title {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+.sheet-close {
+  width: 48rpx;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
   background: #f5f5f5;
+}
+
+.sheet-close:active {
+  background: #e8e8e8;
+}
+
+.sheet-close-x {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 弹窗内容（可滚动） */
+.sheet-body {
+  flex: 1;
   overflow-y: auto;
-  border-right: 1rpx solid #eee;
+  padding: 12rpx 32rpx 40rpx;
 }
 
-.menu-list {
-  padding: 20rpx 0;
-}
-
-.menu-group {
+/* 分组标题 */
+.sheet-group {
   margin-bottom: 20rpx;
 }
 
-.menu-title {
-  padding: 20rpx;
-  font-size: 28rpx;
-  font-weight: bold;
-  color: #333;
+.sheet-group:last-child {
+  margin-bottom: 0;
 }
 
-.menu-item {
-  padding: 16rpx 20rpx 16rpx 40rpx;
+.sheet-group-title {
   font-size: 26rpx;
+  font-weight: 700;
+  color: #95a5a6;
+  padding: 16rpx 0 8rpx;
+  letter-spacing: 2rpx;
+}
+
+/* 章节项 */
+.sheet-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22rpx 20rpx;
+  border-radius: 12rpx;
+  margin-bottom: 4rpx;
+}
+
+.sheet-item:active {
+  background: #f5f0eb;
+}
+
+.sheet-item.active {
+  background: #fdf6ec;
+}
+
+.sheet-item-text {
+  font-size: 28rpx;
   color: #333;
 }
 
-.menu-item:hover {
-  background: #e6e6e6;
+.sheet-item.active .sheet-item-text {
+  color: #c0392b;
+  font-weight: 600;
 }
 
+.sheet-item-check {
+  font-size: 28rpx;
+  color: #c0392b;
+  font-weight: 700;
+}
+
+/* ============ 内容区 ============ */
 .content {
   flex: 1;
-  height: 100%;
+  height: 100vh;
   overflow-y: auto;
   background: #f9f9f9;
+  padding-top: 88rpx;
 }
 
 .content-inner {
-  padding: 40rpx;
+  padding: 32rpx 28rpx 60rpx;
 }
 
 /* ============ 卡片模式 ============ */
 
 /* 页面头部 */
 .card-page-header {
-  margin-bottom: 40rpx;
+  margin-bottom: 32rpx;
   text-align: center;
 }
 .card-page-title {
@@ -92,12 +253,12 @@
 .card-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30rpx;
+  gap: 24rpx;
 }
 
 /* 卡片容器 */
 .card-wrapper {
-  height: 520rpx;
+  height: 480rpx;
   perspective: 1500rpx;
   cursor: pointer;
 }
@@ -109,8 +270,8 @@
   height: 100%;
   transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   transform-style: preserve-3d;
-  border-radius: 24rpx;
-  box-shadow: 0 8rpx 30rpx rgba(0, 0, 0, 0.08);
+  border-radius: 20rpx;
+  box-shadow: 0 6rpx 24rpx rgba(0, 0, 0, 0.06);
 }
 
 .card-inner.flipped {
@@ -124,7 +285,7 @@
   height: 100%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  border-radius: 24rpx;
+  border-radius: 20rpx;
   overflow: hidden;
   background: #fff;
   box-sizing: border-box;
@@ -160,12 +321,12 @@
   justify-content: center;
   width: 100%;
   height: 100%;
-  padding: 40rpx;
+  padding: 36rpx;
   background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
 }
 
 .card-no-image-text {
-  font-size: 26rpx;
+  font-size: 24rpx;
   color: #7f5f4e;
   line-height: 1.8;
   text-align: center;
@@ -178,10 +339,10 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 20rpx;
+  padding: 16rpx;
   background: rgba(0, 0, 0, 0.55);
   color: #fff;
-  font-size: 32rpx;
+  font-size: 28rpx;
   font-weight: bold;
   text-align: center;
   letter-spacing: 4rpx;
@@ -189,7 +350,7 @@
 
 /* 反面 */
 .card-back {
-  padding: 32rpx;
+  padding: 28rpx;
   display: flex;
   flex-direction: column;
   background: #2c3e50;
@@ -199,28 +360,28 @@
 }
 
 .card-back-header {
-  font-size: 36rpx;
+  font-size: 32rpx;
   font-weight: bold;
   text-align: center;
-  margin-bottom: 20rpx;
-  padding-bottom: 16rpx;
+  margin-bottom: 16rpx;
+  padding-bottom: 12rpx;
   border-bottom: 2rpx solid rgba(255, 255, 255, 0.2);
 }
 
 .card-back-section {
-  margin-bottom: 16rpx;
+  margin-bottom: 12rpx;
 }
 
 .card-back-label {
-  font-size: 22rpx;
+  font-size: 20rpx;
   color: #f1c40f;
   font-weight: bold;
   display: block;
-  margin-bottom: 6rpx;
+  margin-bottom: 4rpx;
 }
 
 .card-back-text {
-  font-size: 24rpx;
+  font-size: 22rpx;
   color: #bdc3c7;
   line-height: 1.7;
   display: block;
@@ -229,87 +390,20 @@
 .card-tip {
   margin-top: auto;
   text-align: center;
-  font-size: 20rpx;
+  font-size: 18rpx;
   color: #7f8c8d;
-  padding-top: 12rpx;
+  padding-top: 8rpx;
 }
 
-/* ============ 原有菜单样式 ============ */
-
-/* 移动端适配 */
+/* ============ 移动端适配 ============ */
 @media screen and (max-width: 768px) {
-  .menu-button {
-    display: block;
-  }
-
-  .sidebar {
-    position: fixed;
-    left: -300rpx;
-    top: 0;
-    z-index: 99;
-    transition: all 0.3s;
-  }
-
-  .sidebar.show {
-    left: 0;
-  }
-
-  .content {
-    padding-left: 0;
-  }
-
   .card-grid {
     grid-template-columns: repeat(1, 1fr);
   }
-}
-
-/* 在原有样式基础上添加 */
-.submenu {
-  height: auto;
-}
-
-.submenu-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16rpx 20rpx;
-  font-size: 26rpx;
-}
-
-.third-menu {
-  height: 0;
-  overflow: hidden;
-  transition: height 0.3s;
-}
-
-.third-menu.expanded {
-  height: auto;
-}
-
-.menu-item {
-  padding: 16rpx 20rpx 16rpx 40rpx;
-  font-size: 26rpx;
-  color: #333;
-}
-
-.third-menu .menu-item {
-  padding-left: 60rpx;
-}
-
-.arrow {
-  width:0px;
-  height:0px;
-  border-bottom:6rpx solid transparent; 
-  border-top:6rpx solid transparent; 
-  border-left:10rpx solid #666; 
-  font-size:0px;
-  line-height:0px;
-}
-
-.arrow-down {
-  transform: rotate(90deg);
-}
-
-.menu-item:active {
-  background-color: #f0f0f0;
+  .card-wrapper {
+    height: 440rpx;
+  }
+  .content-inner {
+    padding: 24rpx 20rpx 40rpx;
+  }
 }

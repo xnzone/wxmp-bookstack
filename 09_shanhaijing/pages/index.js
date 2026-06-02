@@ -8,7 +8,6 @@ Page({
     menuList: [],
     article: {},
     showMenu: false,
-    expandedMenu: {},
     book: {},
     // 卡片模式数据
     contentType: 'markdown',
@@ -16,89 +15,49 @@ Page({
     pageTitle: '',
     pageSubtitle: '',
     pageDesc: '',
+    // 导航栏
+    currentTitle: '山海经奇珍异兽图集',
+    contentId: '',
   },
 
   onLoad: function(options) {
-    console.log('[shanhaijing] onLoad start', options);
-    console.time('[shanhaijing] load');
-    this.data.book = options
-    if (options.id) {
-      console.log('[shanhaijing] findMenuPath start');
-      const menuPath = this.findMenuPath(options.id, menuConfig);
-      console.log('[shanhaijing] findMenuPath done, length:', menuPath.length);
-      if (menuPath.length > 0) {
-        this.setData({
-          menuList:  menuPath
-        });
-      }
-      
-      console.log('[shanhaijing] loadContent start');
-      this.loadContent(options.id);
-      console.log('[shanhaijing] loadContent done');
-    } else {
-      this.setData({
-        menuList: menuConfig
-      });
-    }
-    console.timeEnd('[shanhaijing] load');
-  },
-
-  // 查找菜单路径
-  findMenuPath(id, menuList, path = []) {
-    for (const item of menuList) {
-      const currentPath = [...path, item];
-      
-      if (item.id === id) {
-        return currentPath;
-      }
-      
-      if (item.children && item.children.length > 0) {
-        const result = this.findMenuPath(id, item.children, currentPath);
-        if (result.length > 0) {
-          return result;
-        }
-      }
-    }
-    return [];
-  },
-
-  // 切换子菜单的展开/收起状态
-  toggleSubMenu(e) {
-    const { id } = e.currentTarget.dataset;
-    const { expandedMenu } = this.data;
-    
+    this.data.book = options;
+    // 总是加载完整目录用于底部弹窗
     this.setData({
-      ['expandedMenu.' + id]: !expandedMenu[id]
+      menuList: menuConfig[0].children || menuConfig
     });
+
+    if (options.id) {
+      this.loadContent(options.id);
+      const title = this.findTitleById(options.id, menuConfig);
+      if (title) {
+        this.setData({ currentTitle: title, contentId: options.id });
+      }
+    }
+  },
+
+  // 根据 id 查找标题
+  findTitleById(id, menuList) {
+    for (const item of menuList) {
+      if (item.id === id) return item.title;
+      if (item.children && item.children.length > 0) {
+        const result = this.findTitleById(id, item.children);
+        if (result) return result;
+      }
+    }
+    return null;
   },
 
   // 选择菜单项
   selectMenuItem(e) {
     const { id } = e.currentTarget.dataset;
-    const children = this.findMenuChildren(id, this.data.menuList);
-    if (children.length > 0) {
-      this.toggleSubMenu(e);
-    } else {
-      this.loadContent(id);
-      this.setData({
-        showMenu: false
-      });
-    }
-  },
-
-  findMenuChildren(id, menuList) {
-    for (const item of menuList) {
-      if (item.id === id) {
-        return item.children || [];
-      }
-      if (item.children && item.children.length > 0) {
-        const children = this.findMenuChildren(id, item.children);
-        if (children.length > 0) {
-          return children;
-        }
-      }
-    }
-    return [];
+    const title = this.findTitleById(id, menuConfig);
+    this.loadContent(id);
+    this.setData({
+      showMenu: false,
+      currentTitle: title || '山海经奇珍异兽图集',
+      contentId: id
+    });
   },
 
   // 切换菜单显示
@@ -108,20 +67,21 @@ Page({
     });
   },
 
+  // 关闭菜单
+  closeMenu() {
+    this.setData({ showMenu: false });
+  },
+
   // 获取内容
   loadContent(id) {
-    console.log('[shanhaijing] loadContent id:', id);
     const content = contents[id];
-    console.log('[shanhaijing] content type:', typeof content, content && content.type);
-    
+
     // 检查是否为卡片类型数据
     if (content && content.type === 'cards') {
-      console.log('[shanhaijing] card mode');
       const beasts = (content.beasts || []).map(b => ({
         ...b,
         flipped: false
       }));
-      console.log('[shanhaijing] beasts count:', beasts.length);
       this.setData({
         contentType: 'cards',
         beasts: beasts,
@@ -132,28 +92,20 @@ Page({
       });
       return;
     }
-    
+
     // Markdown 模式（封面等）
-    console.log('[shanhaijing] markdown mode');
     this.setData({
       contentType: 'markdown',
       beasts: []
     });
-    
+
     const _ts = this;
-    console.log('[shanhaijing] towxml start');
     let obj = towxml(String(content), 'markdown', {
       events: {
-        tap: e => {
-          console.log('tap', e);
-        },
-        change: e => {
-          console.log('todo', e);
-        }
+        tap: e => {},
+        change: e => {}
       }
     });
-    console.log('[shanhaijing] towxml done');
-    console.log('[shanhaijing] article size:', JSON.stringify(obj).length);
 
     _ts.setData({
       article: obj
@@ -180,7 +132,7 @@ Page({
     return {
       title: this.data.book.title,
       path: `/${this.data.book.id}/pages/index?id=${this.data.book.id}&title=${this.data.book.title}`,
-      promise 
+      promise
     }
   },
   onShareTimeline() {
@@ -194,7 +146,7 @@ Page({
     return {
       title: this.data.book.title,
       path: `/${this.data.book.id}/pages/index?id=${this.data.book.id}&title=${this.data.book.title}`,
-      promise 
+      promise
     }
   }
 })

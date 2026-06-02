@@ -1,44 +1,50 @@
 <view class="container">
-  <view class="menu-button" bindtap="toggleMenu">
-    <image src="https://s2.loli.net/2024/12/13/cpMhF4b9DPCiZWr.png" mode="aspectFit"></image>
-  </view>
-
-  <view class="sidebar {{showMenu ? 'show' : ''}}">
-    <view class="menu-list">
-      <view wx:for="{{menuList}}" wx:key="id" class="menu-group">
-        <view class="menu-title">
-          <text>{{item.title}}</text>
-        </view>
-        <view class="submenu">
-          <block wx:for="{{item.children}}" wx:key="id" wx:for-item="subItem">
-            <block wx:if="{{subItem.children && subItem.children.length > 0}}">
-              <view class="submenu-title" catchtap="selectMenuItem" data-id="{{subItem.id}}">
-                <text>{{subItem.title}}</text>
-                <text class="arrow {{expandedMenu[subItem.id] ? 'arrow-down' : ''}}">></text>
-              </view>
-              <view class="third-menu {{expandedMenu[subItem.id] ? 'expanded' : ''}}">
-                <view wx:for="{{subItem.children}}" 
-                      wx:key="id" 
-                      wx:for-item="thirdItem"
-                      class="menu-item"
-                      catchtap="selectMenuItem"
-                      data-id="{{thirdItem.id}}">
-                  {{thirdItem.title}}
-                </view>
-              </view>
-            </block>
-            <view wx:else 
-                  class="menu-item"
-                  catchtap="selectMenuItem"
-                  data-id="{{subItem.id}}">
-              {{subItem.title}}
-            </view>
-          </block>
-        </view>
+  <!-- 顶部导航栏 -->
+  <view class="nav-bar">
+    <view class="nav-title">{{currentTitle}}</view>
+    <view class="nav-menu-btn" bindtap="toggleMenu">
+      <view class="menu-icon">
+        <view class="menu-icon-line"></view>
+        <view class="menu-icon-line"></view>
+        <view class="menu-icon-line"></view>
       </view>
     </view>
   </view>
 
+  <!-- 遮罩层 -->
+  <view class="menu-overlay {{showMenu ? 'show' : ''}}" catchtap="closeMenu"></view>
+
+  <!-- 底部弹窗菜单 -->
+  <view class="bottom-sheet {{showMenu ? 'show' : ''}}">
+    <view class="sheet-handle"></view>
+    <view class="sheet-header">
+      <text class="sheet-title">📖 章节目录</text>
+      <view class="sheet-close" bindtap="closeMenu">
+        <text class="sheet-close-x">✕</text>
+      </view>
+    </view>
+    <scroll-view class="sheet-body" scroll-y>
+      <view wx:for="{{menuList}}" wx:key="id" class="sheet-group" wx:for-item="group">
+        <block wx:if="{{group.children && group.children.length > 0}}">
+          <view class="sheet-group-title">{{group.title}}</view>
+          <view wx:for="{{group.children}}" wx:key="id" wx:for-item="ch"
+                class="sheet-item {{contentId === ch.id ? 'active' : ''}}"
+                catchtap="selectMenuItem" data-id="{{ch.id}}">
+            <text class="sheet-item-text">{{ch.title}}</text>
+            <text class="sheet-item-check" wx:if="{{contentId === ch.id}}">✓</text>
+          </view>
+        </block>
+        <view wx:else
+              class="sheet-item {{contentId === group.id ? 'active' : ''}}"
+              catchtap="selectMenuItem" data-id="{{group.id}}">
+          <text class="sheet-item-text">{{group.title}}</text>
+          <text class="sheet-item-check" wx:if="{{contentId === group.id}}">✓</text>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 内容区 -->
   <view class="content">
     <view class="content-inner">
       <!-- 卡片模式 -->

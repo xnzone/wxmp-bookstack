@@ -6,14 +6,16 @@ module.exports = {
   beasts: [
     {
       name: "狌狌",
-      image: "https://s2.loli.net/2025/09/28/NbkpTOeVzU8xtg3.png",
+      image:
+        "https://files.seeusercontent.com/2026/06/01/7Uvb/20260601190447683.png",
       appearance: "状如禺而白耳，伏行人走",
       original: "有兽焉，其状如禺而白耳，伏行人走，其名曰狌狌，食之善走。",
       translation: "形似长臂猿，白耳，能伏地行走，人吃了它的肉能走得快。",
     },
     {
       name: "鹿蜀",
-      image: "",
+      image:
+        "https://files.seeusercontent.com/2026/06/01/Nu3v/20260601190605385.png",
       appearance: "状如马而白首，文如虎而赤尾，音如谣",
       original:
         "有兽焉，其状如马而白首，其文如虎而赤尾，其音如谣，其名曰鹿蜀，佩之宜子孙。",
@@ -22,7 +24,8 @@ module.exports = {
     },
     {
       name: "旋龟",
-      image: "",
+      image:
+        "https://files.seeusercontent.com/2026/06/01/daR6/20260601191026388.png",
       appearance: "状如龟而鸟首虺尾，音如判木",
       original:
         "其状如龟而鸟首虺尾，其名曰旋龟，其音如判木，佩之不聋，可以为底。",
@@ -31,7 +34,8 @@ module.exports = {
     },
     {
       name: "鯥",
-      image: "",
+      image:
+        "https://files.seeusercontent.com/2026/06/01/usE6/20260601191303980.png",
       appearance: "状如牛，蛇尾有翼，冬死夏生",
       original:
         "有鱼焉，其状如牛，陵居，蛇尾有翼，其羽在魼下，其音如留牛，其名曰鯥，冬死而夏生，食之无肿疾。",
