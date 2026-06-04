@@ -21,6 +21,134 @@
   height: 48rpx;
 }
 
+/* 搜索栏 */
+.search-bar {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 16rpx;
+}
+
+.search-input {
+  flex: 1;
+  height: 64rpx;
+  background: #f2f0eb;
+  border-radius: 12rpx;
+  padding: 0 24rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.search-placeholder {
+  color: #c0b8a8;
+}
+
+.search-cancel {
+  font-size: 28rpx;
+  color: #c0392b;
+  flex-shrink: 0;
+  padding: 8rpx 4rpx;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 120rpx 0;
+}
+
+.empty-text {
+  font-size: 28rpx;
+  color: #ccc;
+}
+
+/* 特色功能轮播 */
+.feature-swiper {
+  height: 160rpx;
+  margin-bottom: 30rpx;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(192, 57, 43, 0.12);
+}
+
+.feature-entry {
+  height: 100%;
+}
+
+.feature-entry:active {
+  transform: scale(0.98);
+}
+
+.feature-bg {
+  background: linear-gradient(135deg, #fdf5e6, #fef9f0, #fff8f0);
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  border: 2rpx solid #e8d5b7;
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.feature-char-row {
+  display: flex;
+  gap: 6rpx;
+}
+
+.feature-char {
+  width: 56rpx;
+  height: 56rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #c0392b;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.06);
+  font-family: "STKaiti", "KaiTi", "楷体", serif;
+}
+
+.feature-icon {
+  width: 56rpx;
+  height: 56rpx;
+  border-radius: 12rpx;
+}
+
+.feature-info {
+  flex: 1;
+}
+
+.feature-title {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #2c2c2c;
+  display: block;
+  margin-bottom: 6rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.feature-desc {
+  font-size: 22rpx;
+  color: #999;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.feature-arrow {
+  font-size: 32rpx;
+  color: #c0392b;
+  font-weight: 300;
+}
+
+/* 书籍网格 */
 .book-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -57,28 +185,7 @@
   color: #999;
 }
 
-.bottom-bar {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100rpx;
-  background: #fff;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  border-top: 1rpx solid #eee;
-}
-
-.nav-item {
-  padding: 20rpx;
-}
-
-.nav-item image {
-  width: 44rpx;
-  height: 44rpx;
-}
-
+/* 翻页 */
 .pagination {
   display: flex;
   justify-content: center;

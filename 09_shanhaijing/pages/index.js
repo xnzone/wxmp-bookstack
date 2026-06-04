@@ -22,6 +22,7 @@ Page({
 
   onLoad: function(options) {
     this.data.book = options;
+    wx.setNavigationBarTitle({ title: options.title || "iBookstack" });
     // 总是加载完整目录用于底部弹窗
     this.setData({
       menuList: menuConfig[0].children || menuConfig

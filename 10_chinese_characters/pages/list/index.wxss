@@ -1,0 +1,179 @@
+/* 汉字列表页面样式 - 仿秉文识字风格 */
+
+.container {
+  min-height: 100vh;
+  background: #faf8f4;
+  padding: 0 20px 40px;
+}
+
+/* 页面头部 */
+.page-header {
+  padding: 24px 4px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #2c2c2c;
+}
+
+.page-subtitle {
+  font-size: 14px;
+  color: #999;
+  background: #f0ede5;
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+/* 分类标签 */
+.category-scroll {
+  white-space: nowrap;
+  padding: 8px 0 16px;
+}
+
+.category-tag {
+  display: inline-block;
+  padding: 8px 20px;
+  margin-right: 10px;
+  font-size: 14px;
+  color: #888;
+  background: #fff;
+  border-radius: 20px;
+  border: 1px solid #e8e3d8;
+  transition: all 0.2s;
+}
+
+.category-tag.active {
+  color: #fff;
+  background: #c0392b;
+  border-color: #c0392b;
+}
+
+/* 进度条 */
+.progress-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding: 0 4px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background: #e8e3d8;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #c0392b, #e74c3c);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.progress-text {
+  font-size: 12px;
+  color: #aaa;
+  min-width: 48px;
+  text-align: right;
+}
+
+/* 字卡网格 */
+.char-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.char-card {
+  width: calc(33.33% - 8px);
+  background: #fff;
+  border-radius: 16px;
+  padding: 16px 8px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.char-card:active {
+  transform: scale(0.96);
+  border-color: #c0392b;
+  box-shadow: 0 4px 16px rgba(192, 57, 43, 0.12);
+}
+
+.char-card.learned {
+  border-color: #e8d5b7;
+  background: linear-gradient(135deg, #fffef9, #fdf5e6);
+}
+
+.char-display {
+  font-size: 48px;
+  font-weight: 700;
+  color: #2c2c2c;
+  line-height: 1.3;
+  font-family: "STKaiti", "KaiTi", "楷体", serif;
+}
+
+.char-pinyin {
+  font-size: 14px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.char-info {
+  margin-top: 6px;
+  padding: 0 4px;
+}
+
+.char-meaning {
+  font-size: 11px;
+  color: #bbb;
+  text-align: center;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+.stroke-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 10px;
+  color: #ccc;
+  background: #f8f6f0;
+  padding: 2px 6px;
+  border-radius: 8px;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 0;
+}
+
+.empty-text {
+  font-size: 14px;
+  color: #ccc;
+}
+
+/* 学过的标记 */
+.char-card.learned::after {
+  content: "✓";
+  position: absolute;
+  bottom: 8px;
+  left: 8px;
+  font-size: 12px;
+  color: #c0392b;
+}

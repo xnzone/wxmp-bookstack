@@ -5,6 +5,18 @@ Page({
     pageSize: 6, // 每页显示的项目数量
     totalPages: 1, // 总页数
     displayItems: [], // 当前页要显示的项目
+    searchMode: false,
+    searchKeyword: "",
+    allBooks: [], // 搜索时的全量引用
+    featureCards: [
+      {
+        id: "hanyu",
+        title: "汉字启蒙 · 识字练字",
+        desc: "初级10字 · 笔顺动画 · 书写练习",
+        chars: ["一", "人", "大", "山", "水"],
+        url: "/10_chinese_characters/pages/list/index",
+      },
+    ],
     books: [
       {
         id: "09_shanhaijing",
@@ -98,7 +110,46 @@ Page({
       });
     }
   },
-  // 跳转到详情页
+  // 特色功能入口
+  onFeatureTap(e) {
+    const { id } = e.currentTarget.dataset;
+    const card = this.data.featureCards.find((c) => c.id === id);
+    if (card && card.url) {
+      wx.navigateTo({ url: card.url });
+    }
+  },
+  // 搜索 — 进入搜索模式
+  onSearch() {
+    this.setData({
+      searchMode: true,
+      searchKeyword: "",
+      displayItems: this.data.books,
+    });
+  },
+  // 搜索输入
+  onSearchInput(e) {
+    const keyword = e.detail.value.trim().toLowerCase();
+    let filtered = this.data.books;
+    if (keyword) {
+      filtered = this.data.books.filter(
+        (b) =>
+          b.title.toLowerCase().includes(keyword) ||
+          (b.date && b.date.includes(keyword))
+      );
+    }
+    this.setData({ searchKeyword: e.detail.value, displayItems: filtered });
+  },
+  // 取消搜索
+  onSearchCancel() {
+    const allItems = this.data.books;
+    this.setData({
+      searchMode: false,
+      searchKeyword: "",
+      currentPage: 1,
+      totalPages: Math.ceil(allItems.length / this.data.pageSize),
+      displayItems: allItems.slice(0, this.data.pageSize),
+    });
+  },
   goToDetail(e) {
     const { id } = e.currentTarget.dataset;
     var title = "";

@@ -15,6 +15,7 @@ Page({
 
   onLoad: function(options) {
     this.data.book = options;
+    wx.setNavigationBarTitle({ title: options.title || "iBookstack" });
     this.setData({
       menuList: menuConfig[0].children || menuConfig,
       currentTitle: this.getBookTitle(menuConfig)

@@ -1,0 +1,252 @@
+/* 练字页面样式 */
+
+.container {
+  min-height: 100vh;
+  background: #faf8f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 20px 40px;
+}
+
+/* 顶部信息栏 */
+.top-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 0 12px;
+  position: relative;
+}
+
+.char-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.big-char {
+  font-size: 42px;
+  font-weight: 700;
+  color: #2c2c2c;
+  font-family: "STKaiti", "KaiTi", "楷体", serif;
+}
+
+.char-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.pinyin-display {
+  font-size: 18px;
+  color: #555;
+  font-weight: 500;
+}
+
+.meaning-display {
+  font-size: 13px;
+  color: #aaa;
+  margin-top: 4px;
+}
+
+.sound-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 22px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.sound-btn:active {
+  transform: translateY(-50%) scale(0.92);
+  background: #f0f0f0;
+}
+
+.sound-icon {
+  font-size: 20px;
+}
+
+/* 画布区域 */
+.canvas-wrapper {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+.hanzi-canvas {
+  width: 320px;
+  height: 320px;
+  touch-action: none;
+}
+
+.hanzi-canvas.quiz-active {
+  box-shadow: inset 0 0 0 3px rgba(231, 76, 60, 0.25);
+}
+
+/* 加载状态 */
+.canvas-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.loading-text {
+  font-size: 14px;
+  color: #bbb;
+}
+
+/* 笔画进度 */
+.stroke-indicator {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(192, 57, 43, 0.88);
+  padding: 5px 12px;
+  border-radius: 14px;
+}
+
+.stroke-indicator.quiz-progress {
+  background: rgba(39, 174, 96, 0.88);
+}
+
+.stroke-num {
+  font-size: 13px;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* 提示信息区 — 按钮下方，固定高度防闪烁 */
+.hint-area {
+  width: 100%;
+  max-width: 360px;
+  min-height: 72px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+}
+
+.hint-line {
+  font-size: 14px;
+  color: #b3a999;
+  text-align: center;
+  line-height: 1.5;
+  padding: 0 8px;
+}
+
+.hint-warn {
+  color: #e74c3c;
+}
+
+.hint-success {
+  color: #27ae60;
+}
+
+.hint-sub {
+  font-size: 12px;
+  color: #ccc;
+}
+
+.hint-tip {
+  color: #ccc;
+}
+
+/* 底部按钮 */
+.bottom-bar {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 28px;
+  gap: 8px;
+}
+
+.btn {
+  padding: 12px 8px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  transition: all 0.2s;
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn-primary {
+  background: #c0392b;
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(192, 57, 43, 0.25);
+}
+
+.btn-primary:active {
+  background: #a93226;
+}
+
+.btn-outline {
+  background: #fff;
+  color: #666;
+  border: 1.5px solid #e0dbd2;
+}
+
+.btn-outline:active {
+  background: #fdf6f0;
+  border-color: #c0392b;
+  color: #c0392b;
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #c0b8a8;
+  flex: 0 0 auto;
+  min-width: 50px;
+}
+
+.btn-ghost:active {
+  background: #f5f2ed;
+  color: #666;
+}
+
+.btn-disabled {
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.btn-secondary {
+  background: #f7f4ed;
+  color: #999;
+  flex: 0 0 auto;
+  min-width: 56px;
+}
+
+.btn-secondary:active {
+  background: #ebe6d8;
+  color: #666;
+}

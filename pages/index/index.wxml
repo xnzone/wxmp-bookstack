@@ -1,11 +1,58 @@
 <view class="container">
+  <!-- 顶部 -->
   <view class="header">
-    <text class="title">bookstack</text>
-    <view class="search">
-      <image src="https://s2.loli.net/2024/12/13/H4nBZUAoFzfeRI2.png" mode="aspectFit"></image>
-    </view>
+    <block wx:if="{{!searchMode}}">
+      <text class="title">bookstack</text>
+      <view class="search" bindtap="onSearch">
+        <image src="https://s2.loli.net/2024/12/13/H4nBZUAoFzfeRI2.png" mode="aspectFit"></image>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="search-bar">
+        <input
+          class="search-input"
+          value="{{searchKeyword}}"
+          placeholder="搜索书籍..."
+          placeholder-class="search-placeholder"
+          focus="{{true}}"
+          bindinput="onSearchInput"
+          confirm-type="search"
+        />
+        <view class="search-cancel" bindtap="onSearchCancel">取消</view>
+      </view>
+    </block>
   </view>
 
+  <!-- 特色功能轮播（搜索时隐藏） -->
+  <swiper
+    wx:if="{{!searchMode}}"
+    class="feature-swiper"
+    indicator-dots="{{featureCards.length > 1}}"
+    indicator-color="rgba(0,0,0,0.15)"
+    indicator-active-color="#c0392b"
+    autoplay="{{featureCards.length > 1}}"
+    interval="4000"
+    duration="500"
+    circular="{{featureCards.length > 1}}"
+  >
+    <swiper-item wx:for="{{featureCards}}" wx:key="id">
+      <view class="feature-entry" bindtap="onFeatureTap" data-id="{{item.id}}">
+        <view class="feature-bg">
+          <view class="feature-char-row" wx:if="{{item.chars}}">
+            <text class="feature-char" wx:for="{{item.chars}}" wx:for-item="c" wx:key="*this">{{c}}</text>
+          </view>
+          <image wx:if="{{item.icon}}" class="feature-icon" src="{{item.icon}}" mode="aspectFit"></image>
+          <view class="feature-info">
+            <text class="feature-title">{{item.title}}</text>
+            <text class="feature-desc">{{item.desc}}</text>
+          </view>
+          <view class="feature-arrow">→</view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!-- 书籍网格 -->
   <view class="book-grid">
     <view class="book-card" wx:for="{{displayItems}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
       <image class="book-image" src="{{item.image}}" mode="aspectFit"></image>
@@ -15,7 +62,14 @@
       </view>
     </view>
   </view>
-  <view class="pagination">
+
+  <!-- 空结果 -->
+  <view class="empty-state" wx:if="{{searchMode && displayItems.length === 0}}">
+    <text class="empty-text">没有找到相关书籍</text>
+  </view>
+
+  <!-- 翻页（搜索时隐藏） -->
+  <view class="pagination" wx:if="{{!searchMode}}">
     <button bindtap="prevPage" disabled="{{currentPage === 1}}">上一页</button>
     <text>第 {{currentPage}} 页 / 共 {{totalPages}} 页</text>
     <button bindtap="nextPage" disabled="{{currentPage === totalPages}}">下一页</button>

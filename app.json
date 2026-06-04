@@ -56,6 +56,13 @@
       "pages": [
         "pages/index"
       ]
+    },
+    {
+      "root": "10_chinese_characters",
+      "pages": [
+        "pages/list/index",
+        "pages/practice/index"
+      ]
     }
   ],
   "window": {
