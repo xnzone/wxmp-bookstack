@@ -63,6 +63,34 @@
         "pages/list/index",
         "pages/practice/index"
       ]
+    },
+    {
+      "root": "11_hanzi_intermediate",
+      "pages": [
+        "pages/list/index",
+        "pages/practice/index"
+      ]
+    },
+    {
+      "root": "12_hanzi_advanced",
+      "pages": [
+        "pages/list/index",
+        "pages/practice/index"
+      ]
+    },
+    {
+      "root": "13_hanzi_grade4",
+      "pages": [
+        "pages/list/index",
+        "pages/practice/index"
+      ]
+    },
+    {
+      "root": "14_hanzi_grade56",
+      "pages": [
+        "pages/list/index",
+        "pages/practice/index"
+      ]
     }
   ],
   "window": {

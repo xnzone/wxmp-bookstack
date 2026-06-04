@@ -2,7 +2,7 @@ Page({
   data: {
     items: [], // 所有项目数据
     currentPage: 1, // 当前页码
-    pageSize: 6, // 每页显示的项目数量
+    pageSize: 4, // 每页4本（2列×2行）
     totalPages: 1, // 总页数
     displayItems: [], // 当前页要显示的项目
     searchMode: false,
@@ -10,11 +10,39 @@ Page({
     allBooks: [], // 搜索时的全量引用
     featureCards: [
       {
-        id: "hanyu",
-        title: "汉字启蒙 · 识字练字",
-        desc: "初级10字 · 笔顺动画 · 书写练习",
+        id: "hanyu_g1",
+        title: "汉字启蒙 · 一年级",
+        desc: "350字 · 笔顺描红",
         chars: ["一", "人", "大", "山", "水"],
         url: "/10_chinese_characters/pages/list/index",
+      },
+      {
+        id: "hanyu_g2",
+        title: "汉字启蒙 · 二年级",
+        desc: "648字 · 笔顺描红",
+        chars: ["花", "鸟", "鱼", "虫", "飞"],
+        url: "/11_hanzi_intermediate/pages/list/index",
+      },
+      {
+        id: "hanyu_g3",
+        title: "汉字启蒙 · 三年级",
+        desc: "598字 · 笔顺描红",
+        chars: ["龙", "凤", "舞", "翔", "鹤"],
+        url: "/12_hanzi_advanced/pages/list/index",
+      },
+      {
+        id: "hanyu_g4",
+        title: "汉字启蒙 · 四年级",
+        desc: "399字 · 笔顺描红",
+        chars: ["潮", "雾", "狮", "虎", "雁"],
+        url: "/13_hanzi_grade4/pages/list/index",
+      },
+      {
+        id: "hanyu_g56",
+        title: "汉字启蒙 · 五~六年级",
+        desc: "500字 · 笔顺描红",
+        chars: ["麒", "麟", "鹏", "凤", "鹤"],
+        url: "/14_hanzi_grade56/pages/list/index",
       },
     ],
     books: [

@@ -7,84 +7,73 @@ Page({
     categories: [],
     activeCategory: "全部",
     learnedCount: 0,
+    totalCount: 0,
   },
 
   onLoad() {
-    this.initPage();
+    this.initCharacters();
   },
 
   onShow() {
-    // 每次显示页面时刷新学习状态
-    this.updateLearnedStatus();
+    this.refreshLearned();
   },
 
-  initPage() {
-    // 构建分类
-    const categorySet = new Set(CHARACTERS.map((c) => c.category));
-    const categories = [
-      { name: "全部", label: "全部" },
-      ...Array.from(categorySet).map((c) => ({ name: c, label: c })),
-    ];
+  initCharacters() {
+    const chars = CHARACTERS;
+    this.setData({ totalCount: chars.length });
 
-    this.setData({
-      characters: CHARACTERS,
-      categories,
-      activeCategory: "全部",
-      filteredCharacters: CHARACTERS,
+    // 提取分类
+    const catMap = {};
+    chars.forEach((c) => {
+      const cat = c.category || "其他";
+      if (!catMap[cat]) catMap[cat] = [];
+      catMap[cat].push(c);
     });
 
-    this.updateLearnedStatus();
+    const categories = [{ name: "全部", label: "全部" }];
+    Object.keys(catMap).forEach((key) => {
+      categories.push({ name: key, label: key });
+    });
+
+    this.setData({ characters: chars, categories });
+    this.filterByCategory("全部");
+    this.refreshLearned();
   },
 
-  updateLearnedStatus() {
-    const learnedSet = this.getLearnedSet();
-    const updatedChars = CHARACTERS.map((c) => ({
+  refreshLearned() {
+    let learned = [];
+    try {
+      learned = wx.getStorageSync("learned_chars") || [];
+    } catch (_) {}
+
+    const { characters, activeCategory } = this.data;
+    const filtered = activeCategory === "全部"
+      ? characters
+      : characters.filter((c) => c.category === activeCategory);
+
+    const marked = filtered.map((c) => ({
       ...c,
-      learned: learnedSet.has(c.char),
+      learned: learned.includes(c.char),
     }));
 
-    const learnedCount = updatedChars.filter((c) => c.learned).length;
-
     this.setData({
-      characters: updatedChars,
-      learnedCount,
+      filteredCharacters: marked,
+      learnedCount: learned.length,
     });
-
-    this.filterByCategory();
   },
 
-  getLearnedSet() {
-    try {
-      const learned = wx.getStorageSync("learned_chars") || [];
-      return new Set(learned);
-    } catch {
-      return new Set();
-    }
+  filterByCategory(category) {
+    this.setData({ activeCategory: category });
+    this.refreshLearned();
   },
 
   switchCategory(e) {
     const category = e.currentTarget.dataset.category;
-    this.setData({ activeCategory: category });
-    this.filterByCategory();
-  },
-
-  filterByCategory() {
-    const { activeCategory, characters } = this.data;
-    let filtered;
-
-    if (activeCategory === "全部") {
-      filtered = characters;
-    } else {
-      filtered = characters.filter((c) => c.category === activeCategory);
-    }
-
-    this.setData({ filteredCharacters: filtered });
+    this.filterByCategory(category);
   },
 
   goToPractice(e) {
     const char = e.currentTarget.dataset.char;
-    wx.navigateTo({
-      url: `/10_chinese_characters/pages/practice/index?char=${encodeURIComponent(char)}`,
-    });
+    wx.navigateTo({ url: `/10_chinese_characters/pages/practice/index?char=${encodeURIComponent(char)}` });
   },
 });

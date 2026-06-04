@@ -65,7 +65,7 @@
 
 /* 特色功能轮播 */
 .feature-swiper {
-  height: 160rpx;
+  height: 200rpx;
   margin-bottom: 30rpx;
   border-radius: 20rpx;
   overflow: hidden;
@@ -152,7 +152,7 @@
 .book-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 30rpx;
+  gap: 20rpx;
 }
 
 .book-card {
@@ -176,8 +176,14 @@
   font-size: 28rpx;
   font-weight: 500;
   color: #333;
-  display: block;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 1.4;
   margin-bottom: 10rpx;
+  min-height: calc(2 * 28rpx * 1.4);
 }
 
 .book-date {

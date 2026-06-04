@@ -1,50 +1,30 @@
 <view class="container">
-  <!-- 页面标题 -->
   <view class="page-header">
-    <text class="page-title">汉字启蒙</text>
-    <text class="page-subtitle">初级 · 10字</text>
+    <text class="page-title">汉字启蒙 · 一年级</text>
+    <text class="page-subtitle">义务教育阶段</text>
   </view>
 
-  <!-- 分类标签 -->
-  <scroll-view class="category-scroll" scroll-x="true">
-    <view
-      class="category-tag {{activeCategory === item.name ? 'active' : ''}}"
-      wx:for="{{categories}}"
-      wx:key="name"
-      bindtap="switchCategory"
-      data-category="{{item.name}}"
-    >
+  <scroll-view class="category-scroll" scroll-x="true" wx:if="{{categories.length > 1}}">
+    <view class="category-tag {{activeCategory === item.name ? 'active' : ''}}"
+          wx:for="{{categories}}" wx:key="name"
+          bindtap="switchCategory" data-category="{{item.name}}">
       <text>{{item.label}}</text>
     </view>
   </scroll-view>
 
-  <!-- 进度条 -->
   <view class="progress-section">
-    <view class="progress-bar">
-      <view class="progress-fill" style="width: {{(learnedCount / characters.length) * 100}}%"></view>
-    </view>
-    <text class="progress-text">{{learnedCount}}/{{characters.length}} 已学</text>
+    <view class="progress-bar"><view class="progress-fill" style="width: {{totalCount > 0 ? (learnedCount / totalCount) * 100 : 0}}%"></view></view>
+    <text class="progress-text">{{learnedCount}}/{{totalCount}} 已学</text>
   </view>
 
-  <!-- 字卡网格 -->
-  <view class="char-grid">
-    <view
-      class="char-card {{item.learned ? 'learned' : ''}}"
-      wx:for="{{filteredCharacters}}"
-      wx:key="char"
-      bindtap="goToPractice"
-      data-char="{{item.char}}"
-    >
-      <view class="char-display">{{item.char}}</view>
+  <view class="char-grid" wx:if="{{filteredCharacters.length > 0}}">
+    <view class="char-card {{item.learned ? 'learned' : ''}}" wx:for="{{filteredCharacters}}" wx:key="char"
+          bindtap="goToPractice" data-char="{{item.char}}">
       <text class="char-pinyin">{{item.pinyin}}</text>
-      <view class="char-info">
-        <text class="char-meaning">{{item.meaning}}</text>
-      </view>
-      <view class="stroke-badge">{{item.strokeCount}}画</view>
+      <text class="char-display">{{item.char}}</text>
     </view>
   </view>
 
-  <!-- 空状态 -->
   <view class="empty-state" wx:if="{{filteredCharacters.length === 0}}">
     <text class="empty-text">该分类下暂无汉字</text>
   </view>

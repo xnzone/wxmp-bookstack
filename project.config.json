@@ -25,6 +25,7 @@
     "packNpmManually": false,
     "minifyWXSS": true,
     "minifyWXML": true,
+    "ignoreDevUnusedFiles": true,
     "localPlugins": false,
     "disableUseStrict": false,
     "useCompilerPlugins": false,

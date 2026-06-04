@@ -1,0 +1,74 @@
+<view class="container">
+  <!-- 顶部信息栏 -->
+  <view class="top-bar" wx:if="{{charData}}">
+    <view class="char-header">
+      <text class="big-char">{{charData.char}}</text>
+      <view class="char-meta">
+        <text class="pinyin-display">{{charData.pinyin}}</text>
+        <text class="meaning-display">{{charData.meaning}}</text>
+      </view>
+    </view>
+    <view class="sound-btn" bindtap="playSound">
+      <text class="sound-icon">🔊</text>
+    </view>
+  </view>
+
+  <!-- 画布区域 -->
+  <view class="canvas-wrapper">
+    <canvas
+      type="2d"
+      id="hanzi-canvas"
+      class="hanzi-canvas {{mode === 'quiz' ? 'quiz-active' : ''}}"
+      style="width: {{canvasSize}}px; height: {{canvasSize}}px;"
+      disable-scroll="true"
+      bindtouchstart="onCanvasTouchStart"
+      bindtouchmove="onCanvasTouchMove"
+      bindtouchend="onCanvasTouchEnd"
+      bindtouchcancel="onCanvasTouchCancel"
+    ></canvas>
+
+    <!-- 加载中 -->
+    <view class="canvas-loading" wx:if="{{loading}}">
+      <text class="loading-text">加载中...</text>
+    </view>
+
+    <!-- 笔画进度（动画模式） -->
+    <view class="stroke-indicator" wx:if="{{mode === 'animate' && currentStroke > 0}}">
+      <text class="stroke-num">{{currentStroke}}/{{totalStrokes}}</text>
+    </view>
+
+    <!-- 描红进度（测验模式） -->
+    <view class="stroke-indicator quiz-progress" wx:if="{{mode === 'quiz'}}">
+      <text class="stroke-num">{{currentStroke}}/{{totalStrokes}}</text>
+    </view>
+  </view>
+
+  <!-- 按钮区 -->
+  <view class="bottom-bar">
+    <view class="btn btn-secondary" bindtap="resetCanvas">
+      <text>重置</text>
+    </view>
+    <view class="btn {{mode === 'animate' ? 'btn-primary' : 'btn-outline'}}" bindtap="showStrokeOrder">
+      <text>笔顺演示</text>
+    </view>
+    <view class="btn {{mode === 'quiz' ? 'btn-primary' : 'btn-outline'}}" bindtap="startQuiz">
+      <text>{{quizDone ? '再来一次' : '描红练字'}}</text>
+    </view>
+    <view class="btn btn-ghost {{mode === 'quiz' && !quizDone ? '' : 'btn-disabled'}}" bindtap="skipCurrentStroke">
+      <text>跳过</text>
+    </view>
+  </view>
+
+  <!-- 提示信息区（固定高度，始终在按钮下方） -->
+  <view class="hint-area">
+    <view class="hint-line {{mode === 'quiz' && mistakeCount > 0 ? 'hint-warn' : ''}} {{quizDone ? 'hint-success' : ''}}">
+      <text>{{guideText}}</text>
+    </view>
+    <view wx:if="{{mode === 'quiz' && totalMistakes > 0}}" class="hint-sub">
+      <text>错误 {{totalMistakes}} 次</text>
+    </view>
+    <view wx:if="{{mode === 'quiz' && !quizDone}}" class="hint-sub hint-tip">
+      <text>✍️ 用手指在画布上描红</text>
+    </view>
+  </view>
+</view>

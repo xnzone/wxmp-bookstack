@@ -1,7 +1,7 @@
 <view class="container">
   <!-- 顶部导航栏 -->
   <view class="nav-bar">
-    <view class="nav-title" wx:if="{{contentId}}">{{currentTitle}}</view>
+    <view class="nav-title" wx:if="{{contentId && currentTitle !== book.title}}">{{currentTitle}}</view>
     <view class="nav-menu-btn" bindtap="toggleMenu">
       <view class="menu-icon">
         <view class="menu-icon-line"></view>
