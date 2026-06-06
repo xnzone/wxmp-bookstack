@@ -6,56 +6,56 @@ module.exports = {
   beasts: [
     {
       name: '羬羊',
-      image: '',
+      image: 'https://files.seeusercontent.com/2026/06/06/ij4S/20260606171723417.png',
       appearance: '状如羊而马尾，脂可已腊',
       original: '有兽焉，其状如羊而马尾，名曰羬羊，其脂可以已腊。',
       translation: '形似羊，马尾，它的油脂可治皮肤皲裂。'
     },
     {
       name: '肥遗',
-      image: '',
+      image: 'https://files.seeusercontent.com/2026/06/06/nAm8/20260606171814577.png',
       appearance: '状如蛇而六足四翼，见则大旱',
       original: '有蛇焉，其状如蛇而六足四翼，其名曰肥遗，见则天下大旱。',
       translation: '一种蛇，六只脚四只翅膀，它出现则天下大旱。'
     },
     {
       name: '毕方',
-      image: '',
+      image: 'https://files.seeusercontent.com/2026/06/06/Xp7j/20260606172527989.png',
       appearance: '状如鹤，一足，赤文青质白喙',
       original: '有鸟焉，其状如鹤，一足，赤文青质而白喙，其名曰毕方，其鸣自叫也，见则其邑有讹火。',
       translation: '形似鹤，只有一只脚，青底红纹白嘴，叫声如"毕方"，出现便会有怪火。'
     },
     {
       name: '狰',
-      image: '',
+      image: 'https://files.seeusercontent.com/2026/06/06/tG0j/20260606172001236.png',
       appearance: '状如赤豹，五尾一角，音如击石',
       original: '有兽焉，其状如赤豹，五尾一角，其音如击石，其名曰狰。',
       translation: '形似红色豹子，五条尾巴一只角，叫声如击石声。'
     },
     {
       name: '英招',
-      image: '',
+      image: 'https://files.seeusercontent.com/2026/06/06/Uyz1/20260606172503757.png',
       appearance: '状如马而人面，虎纹鸟翼',
       original: '有神焉，其状如马而人面，虎纹而鸟翼，徇于四海，其音如榴，其名曰英招。',
       translation: '马身人面，虎纹鸟翼，巡游四海，声音如榴声。'
     },
     {
       name: '陆吾',
-      image: '',
+      image: 'https://files.seeusercontent.com/2026/06/06/9Xjc/20260606172339769.png',
       appearance: '状如虎而九尾，人面虎爪',
       original: '有神焉，其状如虎而九尾，人面而虎爪，是司天之九部及帝之囿时，名曰陆吾。',
       translation: '虎身九尾，人面虎爪，主管天帝的园林和天之九部。'
     },
     {
       name: '土蝼',
-      image: '',
+      image: 'https://files.seeusercontent.com/2026/06/06/n5bJ/20260606172919289.png',
       appearance: '状如羊而四角，是食人',
       original: '有兽焉，其状如羊而四角，名曰土蝼，是食人。',
       translation: '形似羊，四只角，会吃人。'
     },
     {
       name: '钦原',
-      image: '',
+      image: 'https://files.seeusercontent.com/2026/06/06/6Hao/20260606173227593.png',
       appearance: '状如蜂而大如鸳鸯，蜇木则枯',
       original: '有鸟焉，其状如蜂，大如鸳鸯，名曰钦原，蠚鸟兽则死，蠚木则枯。',
       translation: '形似蜂，大如鸳鸯，蜇鸟兽则死，蜇树木则枯。'

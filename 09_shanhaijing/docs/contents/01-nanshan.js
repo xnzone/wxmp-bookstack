@@ -80,14 +80,14 @@ module.exports = {
     },
     {
       name: "赤鷩",
-      image: "",
+      image: "https://files.seeusercontent.com/2026/06/06/s8xQ/20260606171341427.png",
       appearance: "状如雉而文首，白翼黄足",
       original: "有鸟焉，其状如雉而文首，白翼黄足，其名曰赤鷩，食之不疣。",
       translation: "形似野鸡，头有花纹，白翅黄爪，吃了不长疣子。",
     },
     {
       name: "虎蛟",
-      image: "https://files.seeusercontent.com/2026/06/06/E8cl/20260606105531299.png",
+      image: "https://files.seeusercontent.com/2026/06/06/zmG0/20260606171556304.png",
       appearance: "状如鱼而蛇尾，音如鸳鸯",
       original: "有鱼焉，其状如鱼而蛇尾，其音如鸳鸯，食之不肿，可以已痔。",
       translation: "鱼身蛇尾，叫声如鸳鸯，吃了不肿，可治痔疮。",
