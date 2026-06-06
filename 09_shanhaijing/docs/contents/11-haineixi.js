@@ -13,7 +13,7 @@ module.exports = {
     },
     {
       name: '凤皇',
-      image: '',
+      image: 'https://files.seeusercontent.com/2026/06/06/piQ4/20260606105027083.png',
       appearance: '戴蛇践蛇，膺有赤蛇',
       original: '开明西有凤皇、鸾鸟，皆戴蛇践蛇，膺有赤蛇。',
       translation: '凤凰和鸾鸟，头戴蛇、脚踏蛇，胸前有红蛇。'

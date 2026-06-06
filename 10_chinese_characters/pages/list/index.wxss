@@ -18,42 +18,14 @@
   font-size: 26px;
   font-weight: 700;
   color: #2c2c2c;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
 }
 
 .page-subtitle {
   font-size: 13px;
   color: #bbb0a0;
   font-weight: 400;
-}
-
-/* ========== 分类标签 ========== */
-.category-scroll {
-  white-space: nowrap;
-  padding: 12px 0 16px;
-}
-
-.category-tag {
-  display: inline-block;
-  padding: 7px 20px;
-  margin-right: 10px;
-  font-size: 13px;
-  color: #8b8274;
-  background: #fff;
-  border-radius: 18px;
-  border: 1px solid #e8e3d8;
-  transition: all 0.2s ease;
-}
-
-.category-tag:active {
-  transform: scale(0.95);
-}
-
-.category-tag.active {
-  color: #fff;
-  background: #c0392b;
-  border-color: #c0392b;
-  box-shadow: 0 2px 8px rgba(192, 57, 43, 0.2);
+  letter-spacing: 1px;
 }
 
 /* ========== 进度条 ========== */
@@ -140,16 +112,6 @@
   justify-content: center;
   align-items: center;
   padding: 80px 0;
-}
-
-.empty-state.placeholder {
-  flex-direction: column;
-  gap: 12px;
-  padding: 100px 0;
-}
-
-.empty-icon {
-  font-size: 40px;
 }
 
 .empty-text {

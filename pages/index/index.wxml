@@ -55,7 +55,19 @@
   <!-- 书籍网格 -->
   <view class="book-grid">
     <view class="book-card" wx:for="{{displayItems}}" wx:key="id" bindtap="goToDetail" data-id="{{item.id}}">
-      <image class="book-image" src="{{item.image}}" mode="aspectFit"></image>
+      <block wx:if="{{item.imageError}}">
+        <view class="book-image-placeholder">📖</view>
+      </block>
+      <view wx:else class="book-image-wrap">
+        <image
+          class="book-image"
+          src="{{item.image}}"
+          mode="aspectFill"
+          lazy-load="{{true}}"
+          binderror="onImageError"
+          data-id="{{item.id}}"
+        ></image>
+      </view>
       <view class="book-info">
         <text class="book-title">{{item.title}}</text>
         <text class="book-date">{{item.date}}</text>
@@ -65,13 +77,44 @@
 
   <!-- 空结果 -->
   <view class="empty-state" wx:if="{{searchMode && displayItems.length === 0}}">
+    <view class="empty-icon">📚</view>
     <text class="empty-text">没有找到相关书籍</text>
+    <text class="empty-hint">试试换个关键词吧</text>
   </view>
 
   <!-- 翻页（搜索时隐藏） -->
   <view class="pagination" wx:if="{{!searchMode}}">
-    <button bindtap="prevPage" disabled="{{currentPage === 1}}">上一页</button>
-    <text>第 {{currentPage}} 页 / 共 {{totalPages}} 页</text>
-    <button bindtap="nextPage" disabled="{{currentPage === totalPages}}">下一页</button>
+    <view class="pagi-inner">
+      <!-- 上一页 -->
+      <view
+        class="pagi-btn pagi-prev {{currentPage === 1 ? 'pagi-disabled' : ''}}"
+        bindtap="prevPage"
+        data-disabled="{{currentPage === 1}}"
+      >
+        <text class="pagi-arrow">‹</text>
+      </view>
+
+      <!-- 页码指示器 - 圆点进度 -->
+      <view class="pagi-indicator">
+        <view class="pagi-dots">
+          <view
+            class="pagi-dot {{index + 1 === currentPage ? 'active' : ''}}"
+            wx:for="{{totalPages}}"
+            wx:for-index="index"
+            wx:key="*this"
+          ></view>
+        </view>
+        <text class="pagi-text">{{currentPage}} / {{totalPages}}</text>
+      </view>
+
+      <!-- 下一页 -->
+      <view
+        class="pagi-btn pagi-next {{currentPage === totalPages ? 'pagi-disabled' : ''}}"
+        bindtap="nextPage"
+        data-disabled="{{currentPage === totalPages}}"
+      >
+        <text class="pagi-arrow">›</text>
+      </view>
+    </view>
   </view>
 </view>

@@ -1,31 +1,23 @@
 <view class="container">
   <view class="page-header">
-    <text class="page-title">汉字启蒙 · 五~六年级</text>
-    <text class="page-subtitle">义务教育阶段</text>
+    <text class="page-title">五~六年级</text>
+    <text class="page-subtitle">500字 · 义务教育阶段</text>
   </view>
-
-  <scroll-view class="category-scroll" scroll-x="true" wx:if="{{categories.length > 1}}">
-    <view class="category-tag {{activeCategory === item.name ? 'active' : ''}}"
-          wx:for="{{categories}}" wx:key="name"
-          bindtap="switchCategory" data-category="{{item.name}}">
-      <text>{{item.label}}</text>
-    </view>
-  </scroll-view>
 
   <view class="progress-section">
     <view class="progress-bar"><view class="progress-fill" style="width: {{totalCount > 0 ? (learnedCount / totalCount) * 100 : 0}}%"></view></view>
     <text class="progress-text">{{learnedCount}}/{{totalCount}} 已学</text>
   </view>
 
-  <view class="char-grid" wx:if="{{filteredCharacters.length > 0}}">
-    <view class="char-card {{item.learned ? 'learned' : ''}}" wx:for="{{filteredCharacters}}" wx:key="char"
+  <view class="char-grid" wx:if="{{characters.length > 0}}">
+    <view class="char-card {{item.learned ? 'learned' : ''}}" wx:for="{{characters}}" wx:key="char"
           bindtap="goToPractice" data-char="{{item.char}}">
       <text class="char-pinyin">{{item.pinyin}}</text>
       <text class="char-display">{{item.char}}</text>
     </view>
   </view>
 
-  <view class="empty-state" wx:if="{{filteredCharacters.length === 0}}">
-    <text class="empty-text">该分类下暂无汉字</text>
+  <view class="empty-state" wx:if="{{characters.length === 0}}">
+    <text class="empty-text">暂无汉字数据</text>
   </view>
 </view>

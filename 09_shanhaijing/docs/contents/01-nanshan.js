@@ -44,14 +44,14 @@ module.exports = {
     },
     {
       name: "类",
-      image: "",
+      image: "https://files.seeusercontent.com/2026/06/06/y7wM/20260606105315153.png",
       appearance: "状如狸而有髦，自为牝牡",
       original: "有兽焉，其状如狸而有髦，其名曰类，自为牝牡，食者不妒。",
       translation: "形似野猫，头上有毛发，雌雄同体，吃了它的肉不会嫉妒。",
     },
     {
       name: "猼訑",
-      image: "",
+      image: "https://files.seeusercontent.com/2026/06/06/jh3Q/20260606105220621.png",
       appearance: "状如羊，九尾四耳，目在背",
       original: "有兽焉，其状如羊，九尾四耳，其目在背，其名曰猼訑，佩之不畏。",
       translation:
@@ -59,28 +59,21 @@ module.exports = {
     },
     {
       name: "灌灌",
-      image: "",
+      image: "https://files.seeusercontent.com/2026/06/06/gCl1/20260606105337395.png",
       appearance: "状如鸠，音若呵",
       original: "有鸟焉，其状如鸠，其音若呵，其名曰灌灌，佩之不惑。",
       translation: "形似斑鸠，叫声像人呵斥，佩戴它的羽毛不会迷惑。",
     },
     {
       name: "赤鱬",
-      image: "",
+      image: "https://files.seeusercontent.com/2026/06/06/Ml2t/20260606105400943.png",
       appearance: "状如鱼而人面，音如鸳鸯",
       original: "有鱼焉，其状如鱼而人面，其音如鸳鸯，食之不疥。",
       translation: "形似鱼但有人的面孔，叫声如鸳鸯，吃了不长疥疮。",
     },
     {
-      name: "白猿",
-      image: "",
-      appearance: "状如猿而白身",
-      original: "有兽焉，其状如猿而白身，名曰白猿。",
-      translation: "通体白色的猿猴。",
-    },
-    {
       name: "长右",
-      image: "",
+      image: "https://files.seeusercontent.com/2026/06/06/t6Ww/20260606105447408.png",
       appearance: "状如禺而四耳，见则大水",
       original: "有兽焉，其状如禺而四耳，其名长右，其音如吟，见则郡县大水。",
       translation: "形似长臂猿，有四只耳朵，叫声如呻吟，出现则发大水。",
@@ -94,7 +87,7 @@ module.exports = {
     },
     {
       name: "虎蛟",
-      image: "",
+      image: "https://files.seeusercontent.com/2026/06/06/E8cl/20260606105531299.png",
       appearance: "状如鱼而蛇尾，音如鸳鸯",
       original: "有鱼焉，其状如鱼而蛇尾，其音如鸳鸯，食之不肿，可以已痔。",
       translation: "鱼身蛇尾，叫声如鸳鸯，吃了不肿，可治痔疮。",

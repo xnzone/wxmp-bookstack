@@ -11,36 +11,36 @@ Page({
     featureCards: [
       {
         id: "hanyu_g1",
-        title: "汉字启蒙 · 一年级",
-        desc: "350字 · 笔顺描红",
+        title: "汉字启蒙",
+        desc: "一年级 · 350字",
         chars: ["一", "人", "大", "山", "水"],
         url: "/10_chinese_characters/pages/list/index",
       },
       {
         id: "hanyu_g2",
-        title: "汉字启蒙 · 二年级",
-        desc: "648字 · 笔顺描红",
+        title: "汉字启蒙",
+        desc: "二年级 · 648字",
         chars: ["花", "鸟", "鱼", "虫", "飞"],
         url: "/11_hanzi_intermediate/pages/list/index",
       },
       {
         id: "hanyu_g3",
-        title: "汉字启蒙 · 三年级",
-        desc: "598字 · 笔顺描红",
+        title: "汉字启蒙",
+        desc: "三年级 · 598字",
         chars: ["龙", "凤", "舞", "翔", "鹤"],
         url: "/12_hanzi_advanced/pages/list/index",
       },
       {
         id: "hanyu_g4",
-        title: "汉字启蒙 · 四年级",
-        desc: "399字 · 笔顺描红",
+        title: "汉字启蒙",
+        desc: "四年级 · 399字",
         chars: ["潮", "雾", "狮", "虎", "雁"],
         url: "/13_hanzi_grade4/pages/list/index",
       },
       {
         id: "hanyu_g56",
-        title: "汉字启蒙 · 五~六年级",
-        desc: "500字 · 笔顺描红",
+        title: "汉字启蒙",
+        desc: "五~六年级 · 500字",
         chars: ["麒", "麟", "鹏", "凤", "鹤"],
         url: "/14_hanzi_grade56/pages/list/index",
       },
@@ -104,13 +104,37 @@ Page({
     ],
   },
   onLoad: function () {
-    // 假设从服务器或本地获取所有项目数据
-    const allItems = this.data.books;
+    // 格式化所有日期
+    const books = this.data.books.map(b => ({
+      ...b,
+      date: this.formatDate(b.date),
+    }));
     this.setData({
-      items: allItems,
-      totalPages: Math.ceil(allItems.length / this.data.pageSize),
-      displayItems: allItems.slice(0, this.data.pageSize),
+      books,
+      items: books,
+      totalPages: Math.ceil(books.length / this.data.pageSize),
+      displayItems: books.slice(0, this.data.pageSize),
     });
+  },
+
+  // 格式化日期（如 "2024-03-06" → "3月6日"）
+  formatDate(dateStr) {
+    if (!dateStr) return '';
+    const parts = dateStr.split('-');
+    if (parts.length !== 3) return dateStr;
+    return `${parseInt(parts[1])}月${parseInt(parts[2])}日`;
+  },
+
+  // 图片加载失败 - 显示占位
+  onImageError(e) {
+    const id = e.currentTarget.dataset.id;
+    const items = this.data.displayItems.map(item => {
+      if (item.id === id) {
+        return { ...item, imageError: true };
+      }
+      return item;
+    });
+    this.setData({ displayItems: items });
   },
 
   // 切换到下一页

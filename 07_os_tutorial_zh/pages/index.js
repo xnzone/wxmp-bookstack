@@ -11,6 +11,7 @@ Page({
     book: {},
     currentTitle: '',
     contentId: '',
+    codeTexts: [],   // 所有代码块的文本
   },
 
   onLoad: function(options) {
@@ -67,14 +68,82 @@ Page({
   loadContent(id) {
     const content = contents[id];
     const _ts = this;
-    let obj = towxml(String(content), 'markdown', {
+
+    // 1. 提取所有代码块文本和语言标记
+    const codeTexts = [];
+    const codeLangs = [];
+    const processed = content.replace(/```(\w*)\n?([\s\S]*?)```/g, (match, lang, code) => {
+      codeTexts.push(code.replace(/\n$/, ''));
+      codeLangs.push(lang || 'code');
+      return match;
+    });
+
+    // 2. 转为节点树，同时注册 tap 事件处理复制按钮
+    let obj = towxml(String(processed), 'markdown', {
       events: {
-        tap: e => {},
+        tap: (e) => {
+          try {
+            const nodeData = e.currentTarget.dataset.data;
+            if (nodeData && nodeData.attrs && nodeData.attrs['data-code-idx'] !== undefined) {
+              const idx = parseInt(nodeData.attrs['data-code-idx']);
+              const text = _ts.data.codeTexts[idx];
+              if (text) {
+                wx.setClipboardData({
+                  data: text,
+                  success: () => {
+                    wx.showToast({ title: '已复制', icon: 'none', duration: 1500 });
+                  },
+                });
+              }
+            }
+          } catch(err) {}
+        },
         change: e => {}
       }
     });
-    _ts.setData({ article: obj });
+
+    // 3. 遍历节点树，为每个代码块注入语言标签（点击即复制）
+    const injected = this.injectCodeLabels(obj, codeTexts, codeLangs);
+
+    _ts.setData({
+      article: injected,
+      codeTexts,
+    });
   },
+
+  // 给代码块注入语言标签（右上角，点击复制）
+  injectCodeLabels(node, codeTexts, codeLangs) {
+    if (!node || !node.children) return node;
+
+    let codeIdx = 0;
+    const walk = (children) => {
+      if (!children) return;
+      for (let i = 0; i < children.length; i++) {
+        const child = children[i];
+        if (child.tag === 'view' && child.attrs && child.attrs.class && 
+            child.attrs.class.indexOf('h2w__pre') !== -1) {
+          if (!child.children) child.children = [];
+          const lang = codeLangs[codeIdx] || 'code';
+          const label = { sql: 'SQL', js: 'JS', json: 'JSON', bash: 'Bash', go: 'Go', py: 'Python', java: 'Java', ts: 'TS', css: 'CSS', html: 'HTML', xml: 'XML', yaml: 'YAML', md: 'Markdown', shell: 'Shell', php: 'PHP', c: 'C', cpp: 'C++', rust: 'Rust' }[lang] || (lang === 'code' ? '复制' : lang);
+          child.children.push({
+            tag: 'view',
+            attrs: {
+              class: 'code-lang-tag',
+              'data-code-idx': String(codeIdx),
+            },
+            children: [{ text: label }],
+          });
+          codeIdx++;
+        }
+        if (child.children) walk(child.children);
+      }
+    };
+    walk(node.children);
+    return node;
+  },
+
+  // 复制代码
+  // 注：复制功能通过 towxml 的 tap 事件实现，详见 loadContent
 
   onShareAppMessage() {
     const promise = new Promise(resolve => {
